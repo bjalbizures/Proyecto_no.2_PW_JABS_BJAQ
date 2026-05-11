@@ -1,0 +1,316 @@
+/* ========================================
+   ABOUT PAGE STYLES
+   ======================================== */
+
+.about-page {
+  padding: var(--spacing-4xl) var(--spacing-xl);
+  background: var(--color-background);
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+}
+
+.about-header h1 {
+  color: var(--color-primary);
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-header p {
+  color: var(--color-text-soft);
+  font-size: var(--font-size-lg);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-4xl);
+
+}
+
+.about-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.about-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-card__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+.about-card__header h3 {
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.about-card__content {
+  color: var(--color-text-main);
+  line-height: var(--line-height-relaxed);
+  flex-grow: 1;
+}
+
+.about-identity {
+  margin-bottom: var(--spacing-4xl);
+}
+
+.about-identity__intro {
+  text-align: center;
+  margin: var(--spacing-3xl);
+}
+
+.about-identity__intro h2 {
+  color: var(--color-primary);
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-identity__intro p {
+  color: var(--color-text-soft);
+  line-height: var(--line-height-relaxed);
+}
+
+.about-identity__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-2xl);
+}
+
+.about-identity__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+}
+
+.about-identity__label {
+  display: inline-block;
+  margin-bottom: var(--spacing-md);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.about-identity__card h3 {
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-identity__card p {
+  color: var(--color-text-main);
+  line-height: var(--line-height-relaxed);
+}
+
+.about-values {
+  margin-top: var(--spacing-3xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  text-align: center;
+}
+
+.about-values h3 {
+  color: var(--color-primary);
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-values p {
+  color: var(--color-text-soft);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-xl);
+}
+
+.about-values__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.about-values__item {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* About Footer Section */
+.about-footer {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl);
+}
+
+.about-footer h2 {
+  color: var(--color-primary);
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-3xl);
+  text-align: center;
+}
+
+.about-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-2xl);
+}
+
+.benefit-item {
+  text-align: center;
+  padding: var(--spacing-2xl);
+}
+
+.benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: white;
+  font-size: var(--font-size-2xl);
+  border-radius: 50%;
+  margin-bottom: var(--spacing-lg);
+  flex-shrink: 0;
+}
+
+.benefit-item h4 {
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.benefit-item p {
+  color: var(--color-text-soft);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+/* RESPONSIVE - TABLET */
+@media (max-width: 1024px) {
+  .about-page {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+  }
+
+  .about-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .about-identity__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* RESPONSIVE - MOBILE */
+@media (max-width: 768px) {
+  .about-page {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
+  .about-header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .about-card {
+    padding: var(--spacing-lg);
+  }
+
+  .about-card__header {
+    gap: var(--spacing-md);
+  }
+
+  .about-identity {
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .about-identity__intro h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .about-identity__grid {
+    gap: var(--spacing-lg);
+  }
+
+  .about-identity__card {
+    padding: var(--spacing-lg);
+  }
+
+  .about-values {
+    padding: var(--spacing-lg);
+  }
+
+  .about-values h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .about-footer {
+    padding: var(--spacing-2xl);
+  }
+
+  .about-footer h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .about-benefits {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .benefit-item {
+    padding: var(--spacing-lg);
+  }
+}

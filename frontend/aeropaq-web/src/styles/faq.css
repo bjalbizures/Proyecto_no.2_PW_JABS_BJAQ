@@ -1,0 +1,106 @@
+/* ========================================
+   FAQ PAGE STYLES
+   ======================================== */
+
+.faq-page {
+  padding: var(--spacing-4xl) var(--spacing-xl);
+  background: var(--color-background);
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+}
+
+.faq-header h1 {
+  color: var(--color-primary);
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.faq-header p {
+  color: var(--color-text-soft);
+  font-size: var(--font-size-lg);
+}
+
+.faq-list {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xl);
+}
+
+.faq-question::before {
+  content: "Q: ";
+  color: var(--color-primary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.faq-answer {
+  color: var(--color-text-main);
+  line-height: var(--line-height-relaxed);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 2px solid var(--color-primary-light);
+}
+
+.faq-answer::before {
+  content: "R: ";
+  color: var(--color-text-soft);
+  font-weight: var(--font-weight-bold);
+}
+
+/* RESPONSIVE - TABLET */
+@media (max-width: 1024px) {
+  .faq-page {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+  }
+
+  .faq-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+/* RESPONSIVE - MOBILE */
+@media (max-width: 768px) {
+  .faq-page {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
+  .faq-header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .faq-item {
+    padding: var(--spacing-lg);
+  }
+
+  .faq-question {
+    font-size: var(--font-size-base);
+  }
+
+  .faq-answer {
+    font-size: var(--font-size-sm);
+  }
+}

@@ -1,0 +1,220 @@
+/* ========================================
+   EXPANDABLE INFO SECTION
+   ======================================== */
+
+.expandable-info-section {
+  padding: var(--spacing-xl) var(--spacing-xl);
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+
+.expandable-info-section.reverse .expandable-info-section__card {
+  direction: rtl;
+}
+
+.expandable-info-section.reverse .expandable-info-section__content {
+  direction: ltr;
+}
+
+.expandable-info-section__card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3xl);
+  align-items: stretch;
+}
+
+.expandable-info-section__media {
+  background: var(--color-surface);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expandable-info-section__image {
+  object-fit: contain;
+}
+
+.expandable-info-section__content {
+  background: var(--color-surface);
+  padding: var(--spacing-3xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.expandable-info-section__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
+.expandable-info-section__text h2 {
+  color: var(--color-primary);
+  font-size: var(--font-size-3xl);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.expandable-info-section__text p {
+  color: var(--color-text-soft);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.expandable-info-section__expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  width: fit-content;
+  margin-top: var(--spacing-xl);
+}
+
+.expandable-info-section__expand-btn:hover {
+  transform: translateY(-2px);
+}
+
+.expandable-info-section__expand-btn:active {
+  transform: translateY(0);
+}
+
+.expandable-info-section__expand-text {
+  display: flex;
+  align-items: center;
+}
+
+.expandable-info-section__expand-icon {
+  transition: transform 0.3s ease-out;
+  width: 18px;
+  height: 18px;
+}
+
+.expandable-info-section__card.expanded .expandable-info-section__expand-icon {
+  transform: rotate(180deg);
+}
+
+.expandable-info-section__expanded-zone {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expandable-info-section__expanded-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.expandable-info-section.is-expanded .expandable-info-section__expanded-zone {
+  grid-template-rows: 1fr;
+}
+
+@media (max-width: 1024px) {
+  .expandable-info-section {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+  }
+
+  .expandable-info-section__card {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+  }
+
+  .expandable-info-section.reverse .expandable-info-section__card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .expandable-info-section__media,
+  .expandable-info-section__content {
+    min-height: 320px;
+  }
+
+  .expandable-info-section__media {
+    padding: var(--spacing-xl);
+  }
+
+  .expandable-info-section__image {
+    max-height: 220px;
+  }
+
+  .expandable-info-section__content {
+    padding: var(--spacing-2xl);
+  }
+
+  .expandable-info-section__text h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+}
+
+@media (max-width: 768px) {
+  .expandable-info-section {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    gap: var(--spacing-lg);
+  }
+
+  .expandable-info-section__card {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+
+  .expandable-info-section.reverse .expandable-info-section__card {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .expandable-info-section.reverse .expandable-info-section__content {
+    direction: ltr;
+  }
+
+  .expandable-info-section__media {
+    padding: var(--spacing-lg);
+    order: 2;
+  }
+
+  .expandable-info-section__image {
+    max-height: 200px;
+  }
+
+  .expandable-info-section__content {
+    padding: var(--spacing-lg);
+    order: 1;
+  }
+
+  .expandable-info-section__text h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .expandable-info-section__text p {
+    font-size: var(--font-size-sm);
+  }
+
+  .expandable-info-section__expand-btn {
+    width: 100%;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .expandable-info-section__expand-text {
+    flex-direction: column;
+    gap: 0;
+  }
+
+}
