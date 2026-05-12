@@ -6,15 +6,26 @@ USE aeropaq_db;
 
 CREATE TABLE IF NOT EXISTS users (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(80) NOT NULL,
-  last_name VARCHAR(80) NOT NULL,
+  full_name VARCHAR(160) NOT NULL,
   email VARCHAR(120) NOT NULL UNIQUE,
   phone VARCHAR(30),
+  address VARCHAR(255),
   password_hash VARCHAR(255) NOT NULL,
   role ENUM('customer', 'admin') NOT NULL DEFAULT 'customer',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+INSERT INTO users (full_name, email, phone, address, password_hash, role)
+VALUES (
+  'Administrador Aeropaq',
+  'admin@aeropaq.com',
+  '00000000',
+  'Oficina central',
+  '$2b$10$ydLfCmkcDnUDKi0xN6VVauPwA08jIUzXZeIlVjgjIwY35lMxvvyza',
+  'admin'
+)
+ON DUPLICATE KEY UPDATE role = 'admin';
 
 CREATE TABLE IF NOT EXISTS addresses (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

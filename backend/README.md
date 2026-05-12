@@ -42,3 +42,16 @@ La API queda disponible en:
 - `GET http://localhost:3000/`
 - `GET http://localhost:3000/api/health`
 - `GET http://localhost:3000/api/health/db`
+
+## Autenticacion
+
+El esquema crea un administrador inicial:
+
+- Correo: `admin@aeropaq.com`
+- Contrasena: `Admin123!`
+
+Endpoints disponibles:
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/auth/me` con encabezado `Authorization: Bearer <token>`
