@@ -73,3 +73,9 @@ Ejemplo para crear un envio:
   "weight": 2.5
 }
 ```
+
+## Rastreo publico
+
+Este endpoint no requiere autenticacion:
+
+- `GET /api/tracking/:trackingCode`: consulta el estado y eventos de un paquete por codigo de guia.

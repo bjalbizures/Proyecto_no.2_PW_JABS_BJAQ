@@ -18,6 +18,16 @@ function normalizeShipment(row) {
   };
 }
 
+function normalizeTrackingEvent(row) {
+  return {
+    id: row.id,
+    status: row.status,
+    description: row.description,
+    location: row.location,
+    createdAt: row.created_at,
+  };
+}
+
 function calculateEstimatedCost(weight) {
   const normalizedWeight = Number(weight || 0);
   const billableWeight = normalizedWeight > 0 ? normalizedWeight : 1;
@@ -89,6 +99,12 @@ export async function createShipment(req, res, next) {
       [req.user.id, trackingCode, destination, destinationRegion, weight, estimatedCost, estimatedCost],
     );
 
+    await pool.execute(
+      `INSERT INTO shipment_events (shipment_id, status, description, location)
+       VALUES (?, 'created', 'Envio creado', ?)`,
+      [result.insertId, destinationRegion || destination],
+    );
+
     const [rows] = await pool.execute(
       `SELECT id, tracking_code, destination, destination_region, created_at, status, weight, estimated_cost
        FROM shipments
@@ -105,6 +121,37 @@ export async function createShipment(req, res, next) {
       return createShipment(req, res, next);
     }
 
+    return next(error);
+  }
+}
+
+export async function trackShipment(req, res, next) {
+  try {
+    const [shipmentRows] = await pool.execute(
+      `SELECT id, tracking_code, destination, destination_region, created_at, status, weight, estimated_cost
+       FROM shipments
+       WHERE tracking_code = ?
+       LIMIT 1`,
+      [req.params.trackingCode],
+    );
+
+    if (!shipmentRows[0]) {
+      return res.status(404).json({ message: 'Envio no encontrado' });
+    }
+
+    const [eventRows] = await pool.execute(
+      `SELECT id, status, description, location, created_at
+       FROM shipment_events
+       WHERE shipment_id = ?
+       ORDER BY created_at ASC`,
+      [shipmentRows[0].id],
+    );
+
+    return res.json({
+      shipment: normalizeShipment(shipmentRows[0]),
+      events: eventRows.map(normalizeTrackingEvent),
+    });
+  } catch (error) {
     return next(error);
   }
 }
