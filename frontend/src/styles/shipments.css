@@ -1,0 +1,223 @@
+.shipments-page {
+  min-height: calc(100vh - 180px);
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  background: var(--color-background);
+}
+
+.shipments-shell {
+  width: min(100%, var(--max-width-container));
+  margin: 0 auto;
+}
+
+.shipments-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.shipments-header h1 {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-4xl);
+}
+
+.shipments-header p:not(.ui-eyebrow) {
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-soft);
+}
+
+.shipments-layout {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.shipments-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: var(--spacing-xl);
+}
+
+.shipments-panel__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+}
+
+.shipments-panel__header h2 {
+  font-size: var(--font-size-2xl);
+}
+
+.shipments-panel__header p {
+  color: var(--color-text-soft);
+}
+
+.shipments-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.shipments-form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.shipments-success {
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  background: var(--color-success-surface);
+  color: var(--color-success);
+  font-size: var(--font-size-sm);
+}
+
+.shipments-empty {
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  color: var(--color-text-soft);
+  text-align: center;
+}
+
+.shipments-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.shipment-item {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  background: var(--color-surface);
+}
+
+.shipment-item__main {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.shipment-item__code {
+  color: var(--color-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.shipment-item h3 {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-lg);
+}
+
+.shipment-status {
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.75rem;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.shipment-status--delivered {
+  background: var(--color-success-surface);
+  color: var(--color-success);
+}
+
+.shipment-status--cancelled {
+  background: var(--color-error-surface);
+  color: var(--color-error);
+}
+
+.shipment-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.shipment-meta dt {
+  color: var(--color-text-soft);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.shipment-meta dd {
+  margin-top: var(--spacing-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.shipments-link-button {
+  padding: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.shipments-link-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.tracking-panel {
+  margin-top: var(--spacing-xl);
+}
+
+.tracking-events {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.tracking-events li {
+  border-left: 3px solid var(--color-primary);
+  padding-left: var(--spacing-md);
+}
+
+.tracking-events span {
+  font-weight: var(--font-weight-bold);
+}
+
+.tracking-events p {
+  color: var(--color-text-main);
+}
+
+.tracking-events small {
+  color: var(--color-text-soft);
+}
+
+@media (max-width: 900px) {
+  .shipments-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .shipments-page {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .shipments-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .shipment-item__main {
+    flex-direction: column;
+  }
+
+  .shipment-meta {
+    grid-template-columns: 1fr;
+  }
+}

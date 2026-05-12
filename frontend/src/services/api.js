@@ -41,4 +41,17 @@ export const api = {
   getProfile(token) {
     return request("/auth/me", { token });
   },
+  listMyShipments(token) {
+    return request("/shipments", { token });
+  },
+  createShipment(token, shipment) {
+    return request("/shipments", {
+      token,
+      method: "POST",
+      body: JSON.stringify(shipment),
+    });
+  },
+  trackShipment(trackingCode) {
+    return request(`/tracking/${trackingCode}`);
+  },
 };
