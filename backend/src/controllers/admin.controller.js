@@ -131,6 +131,89 @@ export async function listUsers(_req, res, next) {
   }
 }
 
+export async function getDashboard(req, res, next) {
+  try {
+    const [
+      [summaryRows],
+      [shipmentsByMonthRows],
+      [shipmentsByRegionRows],
+      [shipmentsByStatusRows],
+      [recentShipmentRows],
+    ] = await Promise.all([
+      pool.execute(
+        `SELECT
+           (SELECT COUNT(*) FROM users) AS total_users,
+           (SELECT COUNT(*) FROM users WHERE role = 'customer') AS total_customers,
+           (SELECT COUNT(*) FROM users WHERE role = 'admin') AS total_admins,
+           (SELECT COUNT(*) FROM shipments) AS total_shipments,
+           (SELECT COUNT(*) FROM shipments WHERE status = 'delivered') AS delivered_shipments,
+           (SELECT COUNT(*) FROM shipments WHERE status = 'cancelled') AS cancelled_shipments,
+           COALESCE((SELECT SUM(estimated_cost) FROM shipments), 0) AS total_estimated_revenue`,
+      ),
+      pool.execute(
+        `SELECT DATE_FORMAT(created_at, '%Y-%m') AS month, COUNT(*) AS total
+         FROM shipments
+         GROUP BY month
+         ORDER BY month DESC
+         LIMIT 12`,
+      ),
+      pool.execute(
+        `SELECT COALESCE(destination_region, 'Sin region') AS region, COUNT(*) AS total
+         FROM shipments
+         GROUP BY region
+         ORDER BY total DESC
+         LIMIT 10`,
+      ),
+      pool.execute(
+        `SELECT status, COUNT(*) AS total
+         FROM shipments
+         GROUP BY status
+         ORDER BY total DESC`,
+      ),
+      pool.execute(
+        `SELECT s.id, s.user_id, u.full_name AS customer_name, u.email AS customer_email,
+                s.tracking_code, s.destination, s.destination_region, s.status,
+                s.weight, s.estimated_cost, s.created_at, s.updated_at
+         FROM shipments s
+         INNER JOIN users u ON u.id = s.user_id
+         ORDER BY s.created_at DESC
+         LIMIT 5`,
+      ),
+    ]);
+
+    const summary = summaryRows[0];
+
+    return res.json({
+      summary: {
+        totalUsers: Number(summary.total_users),
+        totalCustomers: Number(summary.total_customers),
+        totalAdmins: Number(summary.total_admins),
+        totalShipments: Number(summary.total_shipments),
+        deliveredShipments: Number(summary.delivered_shipments),
+        cancelledShipments: Number(summary.cancelled_shipments),
+        totalEstimatedRevenue: Number(summary.total_estimated_revenue),
+      },
+      shipmentsByMonth: shipmentsByMonthRows
+        .map((row) => ({
+          month: row.month,
+          total: Number(row.total),
+        }))
+        .reverse(),
+      shipmentsByRegion: shipmentsByRegionRows.map((row) => ({
+        region: row.region,
+        total: Number(row.total),
+      })),
+      shipmentsByStatus: shipmentsByStatusRows.map((row) => ({
+        status: row.status,
+        total: Number(row.total),
+      })),
+      recentShipments: recentShipmentRows.map(normalizeShipment),
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 export async function createUser(req, res, next) {
   try {
     const validationError = validateUserInput(req.body);

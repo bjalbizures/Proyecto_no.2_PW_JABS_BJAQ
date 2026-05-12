@@ -84,6 +84,7 @@ Este endpoint no requiere autenticacion:
 
 Estos endpoints requieren token de un usuario con rol `admin`:
 
+- `GET /api/admin/dashboard`: obtiene metricas del tablero administrativo.
 - `GET /api/admin/users`: lista usuarios.
 - `POST /api/admin/users`: crea usuarios.
 - `GET /api/admin/users/:id`: consulta un usuario.

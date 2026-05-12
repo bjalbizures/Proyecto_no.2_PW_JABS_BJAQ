@@ -5,6 +5,7 @@ import {
   createUser,
   deleteShipment,
   deleteUser,
+  getDashboard,
   getShipment,
   getUser,
   listShipments,
@@ -18,6 +19,8 @@ const router = Router();
 
 router.use(authenticate);
 router.use(authorizeRoles('admin'));
+
+router.get('/dashboard', getDashboard);
 
 router.get('/users', listUsers);
 router.post('/users', createUser);
