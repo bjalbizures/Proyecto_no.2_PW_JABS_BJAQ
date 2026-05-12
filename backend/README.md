@@ -31,10 +31,16 @@ O desde la terminal, ajustando usuario y ruta si hace falta:
 mysql -u root -p < database/schema.sql
 ```
 
-O usando el script del backend:
+O usando el script del backend si tu usuario `root` no tiene contrasena:
 
 ```bash
 npm run db:init
+```
+
+Si tu usuario `root` si tiene contrasena:
+
+```bash
+npm run db:init:password
 ```
 
 ## Ejecutar

@@ -5,6 +5,7 @@
   "scripts": {
     "install:all": "npm --prefix backend install && npm --prefix frontend install",
     "db:init": "npm --prefix backend run db:init",
+    "db:init:password": "npm --prefix backend run db:init:password",
     "dev:backend": "npm --prefix backend run dev",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev": "sh -c 'npm run dev:backend & npm run dev:frontend & wait'",
