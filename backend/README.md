@@ -31,6 +31,12 @@ O desde la terminal, ajustando usuario y ruta si hace falta:
 mysql -u root -p < database/schema.sql
 ```
 
+O usando el script del backend:
+
+```bash
+npm run db:init
+```
+
 ## Ejecutar
 
 ```bash
