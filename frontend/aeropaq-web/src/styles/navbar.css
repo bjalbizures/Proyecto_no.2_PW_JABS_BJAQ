@@ -43,6 +43,18 @@
   opacity: 0.5;
 }
 
+.navbar__link-button {
+  background: transparent;
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+
+.navbar__link-button:hover {
+  opacity: 0.5;
+}
+
 .navbar__btn {
   background: var(--color-surface);
   color: var(--color-primary) !important;

@@ -1,0 +1,106 @@
+.auth-page {
+  min-height: calc(100vh - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  background: var(--color-background);
+}
+
+.auth-card {
+  width: min(100%, 460px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: var(--spacing-2xl);
+}
+
+.auth-card--wide {
+  width: min(100%, 760px);
+}
+
+.auth-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.auth-card__header h1 {
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-main);
+}
+
+.auth-card__header p:not(.ui-eyebrow) {
+  color: var(--color-text-soft);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.auth-form--grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.auth-form__full {
+  grid-column: 1 / -1;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  color: var(--color-text-main);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.auth-form__submit {
+  min-height: 44px;
+}
+
+.auth-form__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+}
+
+.auth-alert {
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  background: var(--color-error-surface);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.auth-card__footer {
+  margin-top: var(--spacing-xl);
+  color: var(--color-text-soft);
+  text-align: center;
+}
+
+.auth-card__footer a {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+@media (max-width: 720px) {
+  .auth-page {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .auth-card {
+    padding: var(--spacing-xl);
+  }
+
+  .auth-form--grid {
+    grid-template-columns: 1fr;
+  }
+}
