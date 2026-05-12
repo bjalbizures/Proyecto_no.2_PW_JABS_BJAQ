@@ -49,11 +49,16 @@ CREATE TABLE IF NOT EXISTS shipments (
   tracking_code VARCHAR(80) NOT NULL UNIQUE,
   origin_address_id INT UNSIGNED,
   destination_address_id INT UNSIGNED,
+  destination VARCHAR(255) NOT NULL,
+  destination_region VARCHAR(120),
   status ENUM('created', 'received', 'in_transit', 'ready_for_pickup', 'delivered', 'cancelled') NOT NULL DEFAULT 'created',
   weight DECIMAL(10,2),
   price DECIMAL(10,2),
+  estimated_cost DECIMAL(10,2),
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_shipments_user_created_at (user_id, created_at),
+  INDEX idx_shipments_region (destination_region),
   CONSTRAINT fk_shipments_user
     FOREIGN KEY (user_id) REFERENCES users(id)
     ON DELETE CASCADE,

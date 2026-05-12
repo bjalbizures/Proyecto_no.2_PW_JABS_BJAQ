@@ -55,3 +55,21 @@ Endpoints disponibles:
 - `POST /api/auth/register`
 - `POST /api/auth/login`
 - `GET /api/auth/me` con encabezado `Authorization: Bearer <token>`
+
+## Envios del cliente
+
+Estos endpoints requieren `Authorization: Bearer <token>`:
+
+- `GET /api/shipments`: lista los envios del cliente autenticado.
+- `POST /api/shipments`: crea un envio.
+- `GET /api/shipments/:trackingCode`: consulta un envio propio por codigo de guia.
+
+Ejemplo para crear un envio:
+
+```json
+{
+  "destination": "Zona 10, Ciudad de Guatemala",
+  "destinationRegion": "Guatemala",
+  "weight": 2.5
+}
+```
