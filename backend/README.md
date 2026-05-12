@@ -79,3 +79,28 @@ Ejemplo para crear un envio:
 Este endpoint no requiere autenticacion:
 
 - `GET /api/tracking/:trackingCode`: consulta el estado y eventos de un paquete por codigo de guia.
+
+## Panel administrativo
+
+Estos endpoints requieren token de un usuario con rol `admin`:
+
+- `GET /api/admin/users`: lista usuarios.
+- `POST /api/admin/users`: crea usuarios.
+- `GET /api/admin/users/:id`: consulta un usuario.
+- `PUT /api/admin/users/:id`: actualiza un usuario.
+- `DELETE /api/admin/users/:id`: elimina un usuario.
+- `GET /api/admin/shipments`: lista todos los envios.
+- `POST /api/admin/shipments`: crea un envio para cualquier usuario.
+- `GET /api/admin/shipments/:id`: consulta un envio.
+- `PUT /api/admin/shipments/:id`: actualiza un envio.
+- `DELETE /api/admin/shipments/:id`: elimina un envio.
+
+Ejemplo para actualizar estado de un envio:
+
+```json
+{
+  "status": "in_transit",
+  "eventDescription": "Paquete en ruta",
+  "eventLocation": "Centro de distribucion"
+}
+```

@@ -2,6 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
 
+import adminRoutes from './routes/admin.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import healthRoutes from './routes/health.routes.js';
 import shipmentRoutes from './routes/shipments.routes.js';
@@ -25,6 +26,7 @@ app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/shipments', shipmentRoutes);
 app.use('/api/tracking', trackingRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use((_req, res) => {
   res.status(404).json({
