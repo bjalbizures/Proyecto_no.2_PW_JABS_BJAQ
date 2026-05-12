@@ -10,10 +10,16 @@ async function request(path, { token, ...options } = {}) {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    ...options,
-    headers,
-  });
+  let response;
+
+  try {
+    response = await fetch(`${API_BASE_URL}${path}`, {
+      ...options,
+      headers,
+    });
+  } catch {
+    throw new Error("No se pudo conectar con la API. Verifica que el backend este encendido.");
+  }
 
   const hasBody = response.status !== 204;
   const data = hasBody ? await response.json() : null;

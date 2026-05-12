@@ -13,7 +13,7 @@ async function startServer() {
       console.log(`Server running on http://localhost:${PORT}`);
     });
   } catch (error) {
-    console.error('Unable to start server:', error.message);
+    console.error('Unable to start server:', error.message || error.code || error);
     process.exit(1);
   }
 }
