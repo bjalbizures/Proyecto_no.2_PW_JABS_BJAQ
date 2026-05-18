@@ -1,0 +1,40 @@
+.sentry-lab {
+  width: min(100% - 2rem, var(--max-width-md));
+  margin: 0 auto;
+  padding: var(--spacing-4xl) 0;
+}
+
+.sentry-lab__panel {
+  display: grid;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-2xl);
+}
+
+.sentry-lab__panel h1 {
+  color: var(--color-text-main);
+  font-size: var(--font-size-3xl);
+}
+
+.sentry-lab__panel p {
+  color: var(--color-text-soft);
+}
+
+.sentry-lab__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.sentry-lab__status {
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  background: var(--color-success-surface);
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (max-width: 480px) {
+  .sentry-lab__actions {
+    flex-direction: column;
+  }
+}

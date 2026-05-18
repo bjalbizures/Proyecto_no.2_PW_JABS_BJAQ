@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
+import { setSentryUser } from "../config/sentry";
 import { api } from "../services/api";
 import { AuthContext } from "./auth-context";
 
@@ -66,6 +67,10 @@ export function AuthProvider({ children }) {
       isMounted = false;
     };
   }, [initialToken]);
+
+  useEffect(() => {
+    setSentryUser(session.user);
+  }, [session.user]);
 
   async function login(credentials) {
     const data = await api.login(credentials);

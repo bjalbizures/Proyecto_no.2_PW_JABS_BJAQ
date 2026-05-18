@@ -6,6 +6,7 @@ export const APP_ROUTES = {
   ABOUT: "/about",
   LOGIN: "/login",
   REGISTER: "/registro",
+  SENTRY_LAB: "/sentry-lab",
   CUSTOMER_SHIPMENTS: "/mis-envios",
   ADMIN_DASHBOARD: "/admin",
 }

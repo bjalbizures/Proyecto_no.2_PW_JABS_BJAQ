@@ -8,6 +8,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import CustomerShipments from "./pages/CustomerShipments";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import SentryLab from "./pages/SentryLab";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Footer from "./components/Footer";
@@ -29,6 +30,7 @@ export default function App() {
           <Route path={APP_ROUTES.ABOUT} element={<About />} />
           <Route path={APP_ROUTES.LOGIN} element={<Login />} />
           <Route path={APP_ROUTES.REGISTER} element={<Register />} />
+          <Route path={APP_ROUTES.SENTRY_LAB} element={<SentryLab />} />
           <Route
             path={APP_ROUTES.CUSTOMER_SHIPMENTS}
             element={(
