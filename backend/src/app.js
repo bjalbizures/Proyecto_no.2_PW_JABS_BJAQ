@@ -4,6 +4,7 @@ import morgan from 'morgan';
 
 import adminRoutes from './routes/admin.routes.js';
 import authRoutes from './routes/auth.routes.js';
+import contactRoutes from './routes/contact.routes.js';
 import healthRoutes from './routes/health.routes.js';
 import shipmentRoutes from './routes/shipments.routes.js';
 import trackingRoutes from './routes/tracking.routes.js';
@@ -34,6 +35,7 @@ app.get('/', (_req, res) => {
 
 app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/contact', contactRoutes);
 app.use('/api/shipments', shipmentRoutes);
 app.use('/api/tracking', trackingRoutes);
 app.use('/api/admin', adminRoutes);

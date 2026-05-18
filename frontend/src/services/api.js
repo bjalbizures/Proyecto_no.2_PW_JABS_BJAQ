@@ -44,6 +44,12 @@ export const api = {
       body: JSON.stringify(user),
     });
   },
+  submitContactMessage(message) {
+    return request("/contact", {
+      method: "POST",
+      body: JSON.stringify(message),
+    });
+  },
   getProfile(token) {
     return request("/auth/me", { token });
   },
@@ -59,5 +65,54 @@ export const api = {
   },
   trackShipment(trackingCode) {
     return request(`/tracking/${trackingCode}`);
+  },
+  getAdminDashboard(token) {
+    return request("/admin/dashboard", { token });
+  },
+  listAdminUsers(token) {
+    return request("/admin/users", { token });
+  },
+  createAdminUser(token, user) {
+    return request("/admin/users", {
+      token,
+      method: "POST",
+      body: JSON.stringify(user),
+    });
+  },
+  updateAdminUser(token, userId, user) {
+    return request(`/admin/users/${userId}`, {
+      token,
+      method: "PUT",
+      body: JSON.stringify(user),
+    });
+  },
+  deleteAdminUser(token, userId) {
+    return request(`/admin/users/${userId}`, {
+      token,
+      method: "DELETE",
+    });
+  },
+  listAdminShipments(token) {
+    return request("/admin/shipments", { token });
+  },
+  createAdminShipment(token, shipment) {
+    return request("/admin/shipments", {
+      token,
+      method: "POST",
+      body: JSON.stringify(shipment),
+    });
+  },
+  updateAdminShipment(token, shipmentId, shipment) {
+    return request(`/admin/shipments/${shipmentId}`, {
+      token,
+      method: "PUT",
+      body: JSON.stringify(shipment),
+    });
+  },
+  deleteAdminShipment(token, shipmentId) {
+    return request(`/admin/shipments/${shipmentId}`, {
+      token,
+      method: "DELETE",
+    });
   },
 };

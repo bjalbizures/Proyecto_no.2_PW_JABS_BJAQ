@@ -81,3 +81,16 @@ CREATE TABLE IF NOT EXISTS shipment_events (
     FOREIGN KEY (shipment_id) REFERENCES shipments(id)
     ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS contact_messages (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(160) NOT NULL,
+  email VARCHAR(120) NOT NULL,
+  phone VARCHAR(30) NOT NULL,
+  message TEXT NOT NULL,
+  status ENUM('new', 'reviewed', 'closed') NOT NULL DEFAULT 'new',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_contact_messages_created_at (created_at),
+  INDEX idx_contact_messages_status (status)
+);

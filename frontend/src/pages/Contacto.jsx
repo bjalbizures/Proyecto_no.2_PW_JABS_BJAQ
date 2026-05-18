@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "../styles/contacto.css";
 
-const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+import { api } from "../services/api";
+import "../styles/contacto.css";
 
 const initialValues = {
   nombre: "",
@@ -111,49 +111,27 @@ export default function Contacto() {
       return;
     }
 
-    if (!GOOGLE_SCRIPT_URL) {
-      setFeedback({
-        type: "error",
-        message: "No pudimos enviar tu mensaje en este momento.",
-      });
-      return;
-    }
-
-    const formData = new URLSearchParams({
-      nombre: values.nombre.trim(),
-      correo: values.correo.trim(),
-      telefono: values.telefono.trim(),
-      mensaje: values.mensaje.trim(),
-    });
-
     setFeedback({ type: "", message: "" });
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        },
-        body: formData.toString(),
+      await api.submitContactMessage({
+        fullName: values.nombre.trim(),
+        email: values.correo.trim(),
+        phone: values.telefono.trim(),
+        message: values.mensaje.trim(),
       });
-
-      const result = await response.json();
-
-      if (!response.ok || !result.ok) {
-        throw new Error(result.message || "No se pudo guardar el formulario.");
-      }
 
       setFeedback({
         type: "success",
-        message: "Formulario enviado correctamente.",
+        message: "Mensaje enviado correctamente.",
       });
       setValues(initialValues);
       setErrors({});
-    } catch {
+    } catch (requestError) {
       setFeedback({
         type: "error",
-        message: "No pudimos enviar tu mensaje. Intenta de nuevo.",
+        message: requestError.message || "No pudimos enviar tu mensaje. Intenta de nuevo.",
       });
     } finally {
       setIsSubmitting(false);

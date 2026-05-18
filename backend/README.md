@@ -92,6 +92,23 @@ Este endpoint no requiere autenticacion:
 
 - `GET /api/tracking/:trackingCode`: consulta el estado y eventos de un paquete por codigo de guia.
 
+## Contacto
+
+Este endpoint no requiere autenticacion y guarda el formulario en MySQL:
+
+- `POST /api/contact`: registra un mensaje de contacto.
+
+Ejemplo:
+
+```json
+{
+  "fullName": "Cliente de prueba",
+  "email": "cliente@correo.com",
+  "phone": "55551234",
+  "message": "Necesito informacion sobre envios internacionales."
+}
+```
+
 ## Panel administrativo
 
 Estos endpoints requieren token de un usuario con rol `admin`:
